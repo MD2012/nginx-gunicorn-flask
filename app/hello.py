@@ -20,7 +20,7 @@ class NameForm(Form):
     name = StringField('What is your name?', validators=[Required()])
     submit = SubmitField('Submit')
 
-@app.route('/', methods=['GET','POST']) 
+@app.route('/hello', methods=['GET','POST']) 
 def index():
     form = NameForm()
     if form.validate_on_submit():
@@ -48,8 +48,8 @@ def jinjademo():
         comments=comments
     )
     
-@app.route('/hello')
-def hello():
+@app.route('/test')
+def index():
     return jsonify({
         'hello': 'letstest',
         'and': 'sth else234',
@@ -57,7 +57,10 @@ def hello():
     })
 
 if __name__ == '__main__':
-    app.run(
-        debug=True,
-        host=os.environ['IP'],
-        port=int(os.environ['PORT']))
+    app.run(host='0.0.0.0')
+
+#if __name__ == '__main__':
+#    app.run(
+#        debug=True,
+#        host=os.environ['IP'],
+#        port=int(os.environ['PORT']))
