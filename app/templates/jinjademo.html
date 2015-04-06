@@ -1,0 +1,50 @@
+<h3>Jinja Templating Demos</h3>
+
+<p>Value from dictionary:{{ mydict['key1'] }}.</p>
+
+<p>safe filter:{{ mydict['key1'] | safe}}.</p>
+
+<p>capitalize filter:{{ mydict['key1'] | capitalize}}.</p>
+
+<p>lower filter:{{ mydict['key1'] | lower}}.</p>
+
+<p>upper filter:{{ mydict['key1'] | upper}}.</p>
+
+<p>title filter:{{ mydict['key1'] | title}}.</p>
+
+<p>trim filter:{{ mydict['key1'] | trim}}.</p>
+
+<p>striptags filter:{{ mydict['key1'] | striptags}}.</p>
+
+<p>Value from list using int idx: {{ mylist[myint] }}</p>
+
+<p>
+    Comments-list directly outpout
+    <ul>
+        {% for comment in comments %}
+        <li>{{ comment }}</li>
+        {% endfor %}
+    </ul>
+</p>
+
+{% macro render_comment(comment) %}
+<li>int: {{ comment }}</li>
+{% endmacro %}
+<p>
+    Comments-list rendered via internal macro
+    <ul>
+        {% for comment in comments %}
+            {{ render_comment(comment) }}
+        {% endfor %}
+    </ul>
+</p>
+
+{% import 'jinjademo_macros.html' as macros %}
+<p>
+    Comments-list rendered via external macro
+    <ul>
+        {% for comment in comments %}
+            {{ macros.render_cmt(comment) }}
+        {% endfor %}
+    </ul>
+</p>
