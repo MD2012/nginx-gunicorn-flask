@@ -21,7 +21,7 @@ class NameForm(Form):
     submit = SubmitField('Submit')
 
 @app.route('/hello', methods=['GET','POST']) 
-def index():
+def hello():
     form = NameForm()
     if form.validate_on_submit():
         old_name = session.get('name')
