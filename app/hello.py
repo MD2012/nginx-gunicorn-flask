@@ -20,8 +20,8 @@ class NameForm(Form):
     name = StringField('What is your name?', validators=[Required()])
     submit = SubmitField('Submit')
 
-@app.route('/hello', methods=['GET','POST']) 
-def hello():
+@app.route('/', methods=['GET','POST']) 
+def index():
     form = NameForm()
     if form.validate_on_submit():
         old_name = session.get('name')
@@ -48,8 +48,8 @@ def jinjademo():
         comments=comments
     )
     
-@app.route('/test')
-def index():
+@app.route('/hello')
+def hello():
     return jsonify({
         'hello': 'letstest',
         'and': 'sth else234',
